@@ -1,0 +1,27 @@
+
+/* Navbar */
+nav{
+    background-color: #1C1E21;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    font-family: 'Times New Roman';
+}
+.navbar-title{
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+    padding: 15px 30px 15px 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 100;
+    flex: 1;
+}
+.navbar-content{
+    border-bottom: 1px solid gray;
+    padding: 15px 10px 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex: 5;
+}
