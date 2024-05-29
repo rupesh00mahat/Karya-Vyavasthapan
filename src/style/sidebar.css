@@ -1,0 +1,39 @@
+#sidebar-wrapper{
+    background-color: #1c1e21;
+    padding: 20px;
+}
+.project-header, .member-header{
+    display: flex;
+    justify-content: space-between;
+    color: #4f525a;
+}
+.project-title, .member-title{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+.project-title h3, .member-title h3{
+    font-size: 23px;
+    font-weight: 400;
+}
+.project-title span, .member-title span{
+    background-color: #333b6b;
+    padding: 5px 10px;
+    border-radius: 50px;
+    color: #4f5ecb;
+}
+.project-content-item, .member-content-item{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px;
+    cursor: pointer;
+}
+.member-info p{
+    font-size: 20px;
+    font-weight: 400;
+    color: #4f525a;
+}
+.member-info span{
+    font-size: 18px;
+    color: #4f525a;
+}
