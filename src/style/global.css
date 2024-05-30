@@ -1,9 +1,107 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-html, body{
-    box-sizing: border-box;
-    overflow-x: hidden;
-    font-family: 'Roboto', 'sans-serif';
+html,
+body {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: "Roboto", "sans-serif";
+}
+.body-wrapper {
+  display: flex;
+}
+#sidebar-wrapper {
+  flex: 1;
+}
+#content-area {
+  flex: 5;
+ 
+}
+.content-area-header{
+    background: rgb(27, 28, 33);
+    background: linear-gradient(
+      194deg,
+      rgba(27, 28, 33, 1) 99%,
+      rgba(27, 29, 33, 1) 100%
+    );
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+}
+.content-area-header .semi-title, .content-area-header p, .content-header-area-one span{
+    color:  #4f525a;
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: 500;
+}
+.content-area-header h2{
+    font-size: 25px;
+    color: white;
+    letter-spacing: 1px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.content-header-area-one{
+    display: flex;
+    gap: 20px;
+    align-items: center;  
+    margin-bottom: 10px;
+}
+.content-header-area-one .star-button{
+    padding: 10px;
+    background-color: #1C1E21;
+    border: 1px solid  #4f525a ;
+    border-radius: 10px;
+}
+.create-task{
+    padding: 12px 25px;
+    border-radius: 10px;
+    border: none;
+    background-color: #586aea;
+    color: white;
+    font-size: 18px;
+}
+.divider{
+    height: 30px;
+    color:  #4f525a;
+}
+.content-header-area-two{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.content-header-area-two .sort-by , .content-header-area-two .filter, .button-group{
+    padding: 8px;
+    display: flex;
+    background-color: #1C1E21;
+    border: 1px solid #4f525a;
+    border-radius: 10px;
+    color: #4f525a;
+    gap: 8px;
+    align-items: center;
+    font-size: 18px;
+
+}
+.sort-by svg{
+    background-color: #41444c;
+    padding: 3px;
+}
+.button-group > button{
+    padding: 3px;
+    display: flex;
+    background-color: #1C1E21;
+    border: none;
+}
+.button-group > button:hover{
+    padding: 3px;
+    display: flex;
+    background-color: #1C1E21;
+    border: none;
+}
+.semi-title h2{
+    display: flex;
+    align-items: center;
+
 }

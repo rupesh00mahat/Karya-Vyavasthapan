@@ -28,6 +28,11 @@
     padding: 10px 0px;
     cursor: pointer;
 }
+.project-content-item h5{
+    font-size: 21px;
+    color: white;
+    font-weight: 400;
+}
 .member-info p{
     font-size: 20px;
     font-weight: 400;
