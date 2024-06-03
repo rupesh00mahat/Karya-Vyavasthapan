@@ -7,6 +7,7 @@ function ContentMainArea() {
        <CategoryList/>
        <CategoryList/>
        <CategoryList/>
+       <CategoryList/>
       </section>
   )
 }

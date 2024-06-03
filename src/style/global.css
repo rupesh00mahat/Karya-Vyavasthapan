@@ -129,6 +129,7 @@ body {
     border-radius: 10px;
     margin: 10px 0px;
     background-color: #1f2124;
+    border: 1px solid #41444c;
 }
 .task-tags{
     display: flex;
@@ -151,7 +152,7 @@ body {
 
 .task-item h3{
     font-size: 25px;
-    line-height: 16px;
+    line-height: 20px;
     font-weight: 400;
 }
 .task-item p{
