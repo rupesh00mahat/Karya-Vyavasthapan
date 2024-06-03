@@ -7,6 +7,7 @@ body {
   box-sizing: border-box;
   overflow-x: hidden;
   font-family: "Roboto", "sans-serif";
+  color: white;
 }
 .body-wrapper {
   display: flex;
@@ -104,4 +105,88 @@ body {
     display: flex;
     align-items: center;
 
+}
+.content-area-main-area{
+    background-color: #131415;
+    padding: 30px;
+}
+.category-item{
+    border: 2px dashed #41444c;
+    border-radius: 10px;
+    padding: 10px;   
+}
+.category-header{
+    background-color: #1f2124;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+}
+.task-item{
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px 0px;
+    background-color: #1f2124;
+}
+.task-tags{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.tags{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.tags span{
+    color: blue;
+    background-color: skyblue;
+    padding: 3px;
+    border-radius: 10px;
+    font-size: 10px;
+}
+
+.task-item h3{
+    font-size: 25px;
+    line-height: 16px;
+    font-weight: 400;
+}
+.task-item p{
+    color: #4f525a;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 400;
+    margin: 10px 0px;
+    max-width: 100%;
+}
+.task-item .days-left{
+    background-color: lightgreen;
+    opacity: 0.4;
+    color: greenyellow;
+    padding: 3px;
+    border-radius: 10px;
+    font-size: 10px;
+}
+.content-area-main-area{
+    display: flex;
+    gap: 10px;
+}
+.category-header .add-new{
+    color: #5769E8;
+    background: none;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+.edit-task{
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
 }
