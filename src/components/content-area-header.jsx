@@ -30,7 +30,6 @@ function ContentAreaHeader() {
           <button className="create-task">Create task</button>
         </div>
         <div className="content-header-area-two">
-         
           <ButtonComponent
             clss="sort-by"
             text="Sort by"
@@ -38,11 +37,11 @@ function ContentAreaHeader() {
           />
           <ButtonComponent
             clss="filter"
-            prefixIcon={            <RiEqualizer2Line />}
+            prefixIcon={<RiEqualizer2Line />}
             text="Filter"
-            icon={            <IoIosArrowDown size={15} color="#586aea" />          }
+            icon={<IoIosArrowDown size={15} color="#586aea" />}
           />
-         
+
           <div className="divider"></div>
           <div className="button-group">
             <button>
