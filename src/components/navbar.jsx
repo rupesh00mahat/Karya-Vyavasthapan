@@ -20,7 +20,7 @@ function Navbar() {
           <button className="dark-mode-toggle">
             <MdDarkMode size={30} color="#6f737f"/>
           </button>
-          <button className="upgrade-button">Upgrade</button>
+          <button className="upgrade-button">Create new task</button>
 
         </div>
       </div>

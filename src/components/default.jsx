@@ -1,15 +1,17 @@
-import React from 'react'
+import React from "react";
 
 function Default() {
   return (
-    <div id='default-wrapper'
-    >
-        <div className='default-text'>
+    <div id="default-wrapper">
+      <div className="default-text">
         <p>Nothing to show. Start by creating a project.</p>
-        <button className='create-project'>Create a project</button>
-        </div>
+        <button className="create-project">Create a project</button>
+      </div>
+      <div className="add-new-project">
+        
+      </div>
     </div>
-  )
+  );
 }
 
-export default Default
+export default Default;

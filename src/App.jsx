@@ -1,11 +1,10 @@
 import Navbar from "./components/navbar";
 import "./style/global.css";
-import Sidebar from "./components/sidebar";
 import ContentArea from "./components/content-area";
 import { useState } from "react";
 import Default from "./components/default";
 function App() {
-  const [showDefault, setShowDefault] = useState(true);
+  const [showDefault, setShowDefault] = useState(false);
   return (
     <>
       {showDefault ? (
@@ -14,7 +13,7 @@ function App() {
         <>
           <Navbar />
           <div className="body-wrapper">
-            <Sidebar />
+            {/* <Sidebar /> */}
             <ContentArea />
           </div>
         </>
