@@ -3,7 +3,24 @@
   padding: 0;
 }
 :root{
-    
+    --site-bg-color: #fff;
+  --site-secondary-bg-color: #000;
+  --site-text-color: #212529;
+  --site-alt-text-color: #fff;
+  --site-link-color: #020617;
+  --site-primary-color: #C19870;
+  --site-secondary-color: #f4f2ed;
+  --site-font-size-normal: 1.6rem;
+  --site-font-size-small: 1rem;
+  --site-font-size-medium: 2.5rem;
+  --site-font-size-big: 5rem;
+  --site-font-size-large: 7rem;
+  --site-font-family-general: "Roboto", sans-serif;
+  --site-font-family-heading: "Poppins", sans-serif;
+  --site-line-height-normal: 1.6;
+}
+html{
+    font-size: 62.5%;
 }
 html,
 body {
