@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../style/navbar.css";
 import { CiSearch } from "react-icons/ci";
 import { MdDarkMode } from "react-icons/md";
 
 
+
 function Navbar() {
+    const [task, setTask]= useState([]);
+
+  console.log(task);
+
+  const addNewTask = () =>{
+    let newTaskTitle = prompt('Enter your task' );
+    let newTaskDescription = prompt('Enter your description');
+      setTask(task=> [...task, {title: newTaskTitle, description: newTaskDescription}])
+  }
+
   return (
     <nav id="navbar-wrapper">
       <div className="navbar-title">
@@ -20,7 +31,9 @@ function Navbar() {
           <button className="dark-mode-toggle">
             <MdDarkMode size={30} color="#6f737f"/>
           </button>
-          <button className="upgrade-button">Create new task</button>
+          <button 
+          onClick={addNewTask}
+          className="upgrade-button">Create new task</button>
 
         </div>
       </div>
