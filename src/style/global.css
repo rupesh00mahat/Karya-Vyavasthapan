@@ -22,12 +22,16 @@
 html{
     font-size: 62.5%;
 }
+p, span, a, div{
+    font-size: var(--site-font-size-normal);
+}
 html,
 body {
   box-sizing: border-box;
   overflow-x: hidden;
   font-family: "Roboto", "sans-serif";
-  color: white;
+  color: var(--site-text-color);
+  text-align: center;
 }
 .flex{
     display: flex;
@@ -44,5 +48,53 @@ body {
 .justify-between{
     justify-content: space-between;
 }
-
-
+.container{
+    max-width: 1100px;
+    margin: auto;
+}
+.site-title-large{
+    font-size: var(--site-font-size-large);
+}
+.site-title-big{
+    font-size: var(--site-font-size-big);
+}
+.site-title-medium{
+    font-size: var(--site-font-size-medium);
+}
+.site-title-normal{
+    font-size: var(--site-font-size-normal);
+}
+.site-title-small{
+    font-size: var(--site-font-size-small);
+}
+button{
+    background-color: #333;
+    color: #fff;
+    padding: 2rem 4rem;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px;
+    cursor: pointer;
+}
+li{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+nav{
+    background-color: var(--site-secondary-bg-color);
+    text-align: center;
+    padding: 2rem 4rem;
+}
+#list-background{
+    border: 1px solid #333;
+margin: 1rem;
+border-radius: 15px;
+text-align: center;
+}
+.task-item{
+    padding: 2rem 4rem;
+    border-bottom: 1px solid black;
+}

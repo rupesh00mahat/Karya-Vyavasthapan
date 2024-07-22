@@ -3,13 +3,11 @@ import React from 'react'
 function Navbar() {
   return (
     <nav>
-      <h1>Karya Vyavasthapan</h1>
-     <span>Today's date</span>
-     <div className="buttons-list">
-      <button>Start</button>
-      <button>Pause</button>
-      <button>Stop</button>
-     </div>
+      <div className="container">
+      <h1 className='site-title-medium'>Karya Vyavasthapan</h1>
+      </div>
+
+     
     </nav>
   )
 }
