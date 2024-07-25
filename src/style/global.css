@@ -89,12 +89,13 @@ nav{
     padding: 2rem 4rem;
 }
 #list-background{
-    border: 1px solid #333;
-margin: 1rem;
-border-radius: 15px;
-text-align: center;
+   background-color: var(--site-link-color);
+   color: var(--site-bg-color);
+   border: 1px solid var(--site-primary-color);
+   width: 30%;
 }
+
 .task-item{
-    padding: 2rem 4rem;
-    border-bottom: 1px solid black;
+    padding: 1rem 2rem;
+    border: 1px solid var(--site-primary-color);
 }
