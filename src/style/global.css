@@ -88,14 +88,8 @@ nav{
     text-align: center;
     padding: 2rem 4rem;
 }
-#list-background{
-   background-color: var(--site-link-color);
-   color: var(--site-bg-color);
-   border: 1px solid var(--site-primary-color);
-   width: 30%;
-}
+input{
+    padding: 1.8rem 4rem;
+    border-radius: 10px;
 
-.task-item{
-    padding: 1rem 2rem;
-    border: 1px solid var(--site-primary-color);
 }

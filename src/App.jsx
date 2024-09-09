@@ -1,33 +1,43 @@
-import { useState, useRef } from "react";
-import ListBackground from "./components/list-bg";
-import Navbar from "./components/navbar";
-import './style/global.css';
 
+import "./style/global.css";
+import {
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure,
+    Button,
+  } from '@chakra-ui/react'
+
+  
 
 function App() {
-
-    const [task, newTask] = useState([]);
-    const inputTask = useRef("");
-
-    const createNewTask = (e) =>{
-        e.preventDefault();
-       newTask([...task,inputTask.current.value]);
-       inputTask.current.value  = "";
-    }
-
- return <>
- <Navbar/> 
-    <input type="text" name="task" id="task" ref={inputTask} />
- <button
- onClick={createNewTask}
- >Create Task</button>
- 
-<div className="container list-background-wrapper flex justify-between">
-    <ListBackground title="Not Started" tasks={task}/>
-    <ListBackground title="Ongoing"/>
-    <ListBackground title="Finished"/>
-</div>
- </>
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    return (
+      <>
+        <Button onClick={onOpen}>Open Modal</Button>
+  
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Modal Title</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+            </ModalBody>
+  
+            <ModalFooter>
+              <Button colorScheme='blue' mr={3} onClick={onClose}>
+                Close
+              </Button>
+              <Button variant='ghost'>Secondary Action</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </>
+    )
 }
 
 export default App;
