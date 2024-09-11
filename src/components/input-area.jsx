@@ -14,18 +14,22 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { TaskContext } from "../context/taskContext";
+import { v4 as uuidv4 } from 'uuid';
+
 
 function InputArea() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const {state, dispatch} = useContext(TaskContext);
+
+
 console.log(state);
   const taskItem = useRef("");
   const taskCategory = useRef("");
   const [taskLabel, setTaskLabel] = useState("ns");
 
   const AddTask = () =>{
-    let newTask = {task: taskItem.current.value, category: taskCategory.current.value, label: taskLabel};
+    let newTask = {id: uuidv4(),task: taskItem.current.value, category: taskCategory.current.value, label: taskLabel};
     dispatch({type: "ADD_TASK", payload: newTask});
   }
 

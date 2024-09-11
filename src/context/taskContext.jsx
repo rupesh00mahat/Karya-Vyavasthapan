@@ -7,6 +7,10 @@ const taskContextReducer = (state, action) => {
     let oldTasks = state.tasks;
     return { ...state, tasks: [...oldTasks, action.payload] };
   }
+  else if(action.type === "DELETE_TASK"){
+    let updatedTask =state.tasks.filter(item => item.id !== action.payload);
+    return {...state, tasks: updatedTask}
+  }
 };
 
 function TaskContextProvider({ children }) {
