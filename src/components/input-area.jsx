@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -14,28 +14,63 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { TaskContext } from "../context/taskContext";
-import { v4 as uuidv4 } from 'uuid';
-
+import { v4 as uuidv4 } from "uuid";
 
 function InputArea() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const {state, dispatch} = useContext(TaskContext);
+  const { state, dispatch } = useContext(TaskContext);
 
-
-console.log(state);
   const taskItem = useRef("");
   const taskCategory = useRef("");
   const [taskLabel, setTaskLabel] = useState("ns");
+  const [editableValue, setEditableValue] = useState("");
 
-  const AddTask = () =>{
-    let newTask = {id: uuidv4(),task: taskItem.current.value, category: taskCategory.current.value, label: taskLabel};
-    dispatch({type: "ADD_TASK", payload: newTask});
-  }
+  useEffect(() => {
+    if (state.openModal.openState === true) {
+      console.log(state);
+      if (
+        state.openModal.type != undefined &&
+        state.openModal.type === "EDIT"
+      ) {
+       const result = state.tasks.find(item=>item.id == state.openModal.id)
+     if(taskItem.current){
+      taskItem.current.value = result.task;
+     }
+      if(taskCategory.current){
+        taskCategory.current.value = result.category;
+      }
+      setTaskLabel(result.label);
+     }
+      
+      onOpen();
+    } else {
+      onClose();
+    }
+  }, [state.openModal.openState]);
+
+  const AddTask = () => {
+    let newTask = {
+      id: uuidv4(),
+      task: taskItem.current.value,
+      category: taskCategory.current.value,
+      label: taskLabel,
+    };
+    dispatch({ type: "ADD_TASK", payload: newTask });
+  };
 
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
+      <Button
+        onClick={() => {
+          dispatch({
+            type: "TOGGLE_MODAL",
+            payload: { openState: true, type: "ADD_NEW" },
+          });
+        }}
+      >
+        Open Modal
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -71,16 +106,24 @@ console.log(state);
 
           <ModalFooter>
             <Button
-            onClick={()=>{
+              onClick={() => {
                 AddTask();
-            }}
-            width={{ base: "100%" }}>Create Task</Button>
+              }}
+              width={{ base: "100%" }}
+            >
+              Create Task
+            </Button>
 
             <Button
               width={{ base: "100%" }}
               colorScheme="blue"
               mr={3}
-              onClick={onClose}
+              onClick={() => {
+                dispatch({
+                  type: "TOGGLE_MODAL",
+                  payload: { openState: false, type: "ADD_NEW" },
+                });
+              }}
             >
               Close
             </Button>
