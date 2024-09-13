@@ -21,28 +21,27 @@ function InputArea() {
 
   const { state, dispatch } = useContext(TaskContext);
 
-  const taskItem = useRef("");
-  const taskCategory = useRef("");
+  const [taskItem, setTaskItem] = useState("");
+  const [taskCategory, setTaskCategory] = useState("");
   const [taskLabel, setTaskLabel] = useState("ns");
   const [editableValue, setEditableValue] = useState("");
 
   useEffect(() => {
     if (state.openModal.openState === true) {
-      console.log(state);
       if (
         state.openModal.type != undefined &&
         state.openModal.type === "EDIT"
       ) {
-       const result = state.tasks.find(item=>item.id == state.openModal.id)
-     if(taskItem.current){
-      taskItem.current.value = result.task;
-     }
-      if(taskCategory.current){
-        taskCategory.current.value = result.category;
+        const result = state.tasks.find(
+          (item) => item.id == state.openModal.id
+        );
+        setTaskItem(result.task);
+
+        setTaskCategory(result.category);
+
+        setTaskLabel(result.label);
       }
-      setTaskLabel(result.label);
-     }
-      
+
       onOpen();
     } else {
       onClose();
@@ -50,10 +49,16 @@ function InputArea() {
   }, [state.openModal.openState]);
 
   const AddTask = () => {
+    console.log("state");
+    console.log(state);
+    if (state.payload.type === "EDIT") {
+      dispatch({ type: "EDIT", payload: id });
+      return;
+    }
     let newTask = {
       id: uuidv4(),
-      task: taskItem.current.value,
-      category: taskCategory.current.value,
+      task: taskItem,
+      category: taskCategory,
       label: taskLabel,
     };
     dispatch({ type: "ADD_TASK", payload: newTask });
@@ -80,11 +85,23 @@ function InputArea() {
             <form>
               <FormControl>
                 <FormLabel>Task Name</FormLabel>
-                <Input type="text" ref={taskItem} />
+                <Input
+                  type="text"
+                  value={taskItem}
+                  onChange={(e) => {
+                    setTaskItem(e.target.value);
+                  }}
+                />
               </FormControl>
               <FormControl>
                 <FormLabel>Task Category</FormLabel>
-                <Input type="text" ref={taskCategory} />
+                <Input
+                  type="text"
+                  value={taskCategory}
+                  onChange={(e) => {
+                    setTaskCategory(e.target.value);
+                  }}
+                />
               </FormControl>
               <FormControl>
                 <FormLabel>Status</FormLabel>
