@@ -8,13 +8,26 @@
   border-radius: 2rem;
   align-items: center;
 }
-.category-and-label {
+.category-and-label, .category-and-label-filter {
   display: flex;
   gap: 1rem;
 }
 .category-and-label span {
   background-color: green;
   color: #fff;
-  padding: 0.5rem;
-  border-radius: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  min-width: 100%;
+}
+.category-and-label-filter{
+  justify-content: center;
+}
+.delete-update-task, .category-and-label{
+  display: flex;
+  flex-direction: column;
+}
+.task-name{
+  font-size: 2.5rem;
+  font-weight: 700;;
+
 }

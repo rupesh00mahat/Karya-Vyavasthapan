@@ -8,6 +8,7 @@ function Tasks() {
   const [labelList, setLabelList] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
   const [tasksToShow, setTasksToShow] = useState([]);
+  const [selectedDueDate, setSelectedDueDate] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedLabel, setSelectedLabel] = useState("all");
 
@@ -41,31 +42,43 @@ function Tasks() {
       newTasks = state.tasks.filter(
         (item) => item.category === selectedCategory
       );
-    }
-    else{
+    } else {
       newTasks = state.tasks;
     }
-  
-    setTasksToShow(newTasks);
 
+    setTasksToShow(newTasks);
   }, [selectedCategory, state.tasks]);
   useEffect(() => {
     let newTasks = [];
     if (state.tasks.length > 0 && selectedLabel !== "all") {
       newTasks = state.tasks.filter((item) => item.label === selectedLabel);
-    }else{
+    } else {
       newTasks = state.tasks;
     }
     setTasksToShow(newTasks);
   }, [selectedLabel, state.tasks]);
 
+  useEffect(() => {
+    let newTasks = [];
+    if (state.tasks.length > 0 && selectedDueDate !== "") {
+      newTasks = state.tasks.filter((item) => item.dueDate === selectedDueDate);
+    } else {
+      newTasks = state.tasks;
+    }
+    setTasksToShow(newTasks);
+  }, [selectedDueDate, state.tasks]);
+
   return (
     <>
-      <div>
-        {categoryList && (
+      <div className="category-and-label-filter">
+        {categoryList && categoryList.length > 1 && (
           <div className="filter-category">
             <span>Category</span>
-            <select onChange={(e)=>{setSelectedCategory(e.target.value)}}>
+            <select
+              onChange={(e) => {
+                setSelectedCategory(e.target.value);
+              }}
+            >
               {categoryList.map((categoryItem, index) => {
                 return (
                   <option key={`${categoryItem}-${index}`}>
@@ -76,10 +89,14 @@ function Tasks() {
             </select>
           </div>
         )}
-        {labelList && (
+        {labelList && labelList.length > 1 && (
           <div className="filter-label">
             <span>Label</span>
-            <select onChange={(e)=>{setSelectedLabel(e.target.value)}}>
+            <select
+              onChange={(e) => {
+                setSelectedLabel(e.target.value);
+              }}
+            >
               {labelList.map((labelItem, index) => {
                 return (
                   <option key={`${labelItem}-${index}`}>{labelItem}</option>
@@ -88,16 +105,32 @@ function Tasks() {
             </select>
           </div>
         )}
+        {state.tasks.length > 1 && (
+          <div className="date-filter">
+            <span>Due Date</span>
+            <input
+              type="date"
+              value={selectedDueDate || ""}
+              onChange={(e) => {
+                setSelectedDueDate(e.target.value);
+              }}
+            />
+          </div>
+        )}
       </div>
       <ul>
         {tasksToShow &&
-          tasksToShow.map(({ task, category, label, id }, index) => {
+          tasksToShow.map(({ task, category, label, id, dueDate }, index) => {
             return (
-              <li key={`${task}-${index}`} className="task-item">
-                <div>{task}</div>
+              <li key={id} className="task-item">
+                <div className="task-name">{task}</div>
                 <div className="category-and-label">
-                  <span>{label}</span>
-                  <span>{category}</span>
+                  Label:
+                  <span className="label">{label}</span>
+                  Category:
+                  <span className="category">{category}</span>
+                  Due Date:
+                  <span className="due-date">{dueDate}</span>
                 </div>
                 <div className="delete-update-task">
                   <button

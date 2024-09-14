@@ -10,17 +10,22 @@ const taskContextReducer = (state, action) => {
     let updatedTask = state.tasks.filter((item) => item.id !== action.payload);
     return { ...state, tasks: updatedTask };
   } else if (action.type === "TOGGLE_MODAL") {
-    if(action.payload.type === "EDIT"){
-      console.log(action.payload);
-    }
-  return {...state, openModal: action.payload};
+    return { ...state, openModal: action.payload };
+  } else if (action.type === "EDIT") {
+    console.log(action);
+    let updatedTask = state.tasks.filter(
+      (item) => item.id !== state.openModal.id
+    );
+    let newTask = action.payload;
+
+    return { ...state, tasks: [...updatedTask, newTask] };
   }
 };
 
 function TaskContextProvider({ children }) {
   const [state, dispatch] = useReducer(taskContextReducer, {
     tasks: [],
-    openModal: {openState: false, type: ""},
+    openModal: { openState: false, type: "" },
   });
   return (
     <TaskContext.Provider value={{ state, dispatch }}>

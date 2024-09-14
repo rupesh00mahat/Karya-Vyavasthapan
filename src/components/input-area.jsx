@@ -24,7 +24,7 @@ function InputArea() {
   const [taskItem, setTaskItem] = useState("");
   const [taskCategory, setTaskCategory] = useState("");
   const [taskLabel, setTaskLabel] = useState("ns");
-  const [editableValue, setEditableValue] = useState("");
+  const [taskDueDate, setTaskDueDate] = useState("");
 
   useEffect(() => {
     if (state.openModal.openState === true) {
@@ -40,6 +40,7 @@ function InputArea() {
         setTaskCategory(result.category);
 
         setTaskLabel(result.label);
+        setTaskDueDate(result.dueDate);
       }
 
       onOpen();
@@ -49,19 +50,22 @@ function InputArea() {
   }, [state.openModal.openState]);
 
   const AddTask = () => {
-    console.log("state");
-    console.log(state);
-    if (state.payload.type === "EDIT") {
-      dispatch({ type: "EDIT", payload: id });
-      return;
-    }
     let newTask = {
       id: uuidv4(),
       task: taskItem,
       category: taskCategory,
       label: taskLabel,
+      dueDate: taskDueDate
     };
+
+    if(state.openModal.type == "EDIT"){
+      dispatch({type: "EDIT", payload: {task: taskItem, category: taskCategory, label:taskLabel, dueDate: taskDueDate, id: state.openModal.id}});
+      return ;
+    }
+    
+    
     dispatch({ type: "ADD_TASK", payload: newTask });
+   
   };
 
   return (
@@ -117,6 +121,18 @@ function InputArea() {
                   <option value="og">OnGoing</option>
                   <option value="complete">Completed</option>
                 </Select>
+              </FormControl>
+              <FormControl>
+                <FormLabel>Due Date</FormLabel>
+                <Input
+                value={taskDueDate}
+                onChange={(e)=>{
+                  setTaskDueDate(e.target.value);
+                }}
+                  placeholder="Select Date"
+                  size="md"
+                  type="date"
+                />
               </FormControl>
             </form>
           </ModalBody>
